@@ -1,0 +1,110 @@
+/*
+*吃货宝定制style
+*作者：张涛
+*时间:2017/11/15
+*/
+
+/*导航条风格-百度红*/
+.navbar-logo{background-color:#ff2d4b;opacity: .8;}
+.navbar-logo .logo{ color: #fff }
+.navbar-logo .navbar-logo-m{color: #eee}
+.navbar-logo .navbar-nav > ul > li,
+.navbar-logo .navbar-nav > ul > li > a{ color:#fff}
+.navbar-logo .navbar-nav > ul > li > a:hover,
+.navbar-logo .navbar-nav > ul > li.current > a{color:#fff}
+.navbar-logo .navbar-userbar{ color: #fff}
+@media (max-width: 767px) {
+  .navbar-logo .navbar-nav > ul > li{border-bottom: solid 1px #222}
+  .navbar-logo .navbar-nav > ul > li > a:hover,
+  .navbar-logo .navbar-nav > ul > li.current > a{ background: #777}
+}
+
+.navbar-userbar {
+    position: absolute;
+    top: 0;
+    right: 20%;
+}
+.navbar-userbar {
+    padding-top: 8px;
+    z-index: 1030;
+}
+
+.navbar .logo {
+    height: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    opacity: 1;
+}
+
+.navbar-slogan {
+    font-size: 15px;
+}
+
+.img-responsive {
+    height: 50px;
+}
+
+.bg{
+    background: url(../../../imgs/bg.jpg);
+    background-repeat: no-repeat;
+    height: 800px;
+    margin-top: -50px;
+}
+
+.logo-section{
+    height: 50px;
+    padding: 90px 0 50px;
+}
+
+.logo-section h1{
+    font-size: 50px;
+}
+
+.search-bar {
+    margin: 50px auto;
+    width: 25%;
+    height: 48px;
+    position: relative;
+    border: solid 1px #000;
+    padding-right: 60px;
+}
+
+.search-bar .search-input {
+    border: none;
+    width: 100%;
+    line-height: 48px;
+    font-size: 18px;
+    font-weight: normal;
+    padding-left: 10px;
+}
+.search-bar .search-submit {
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    width: 44px;
+    height: 44px;
+    background-color: #5eb95e;
+    text-align: center;
+    color: #333;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.search-bar .search-submit-l{
+    position: absolute;
+    left: -65px;
+    width: 63px;
+    height: 48px;
+    background-color: #ffffff;
+    text-align: center;
+    color: #333;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 44px;
+}
