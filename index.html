@@ -24,6 +24,7 @@
         .ui-sortable .panel-header{ cursor:move}
     </style>
     <title>吃货宝-可能是湛江最菜的吃货订餐平台</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
     <meta name="description" content="”吃货宝”2017年创立于广东海洋大学，可能是海大领先的本地生活平台，截至目前，还在开发中2333333">
     <meta name="keywords" content="吃货宝，网上订餐，外卖，快餐外卖，外卖网">
 </head>
@@ -38,8 +39,9 @@
                     </div>
                 </div>
                 <nav class="navbar-userbar f-r">
-                        <a href="#"  class="btn btn-primary radius" >登陆</a>
-                        <a href="#"  class="btn btn-success radius" >注册</a>                    
+                        <a href="#"  class="btn btn-primary radius" onClick="modaluserlogin()" >登录</a>
+                        <a href="#"  class="btn btn-success radius" onClick="modaluserreg()"  >注册</a>
+                        <a href="#"  class="btn btn-inverse radius" onClick="modalsellerlog()" >商家登录</a>                    
                 </nav>
             </header>
             <div class="bg">
@@ -56,7 +58,7 @@
                         </span>
                         <input type="text" value="" placeholder="请输入您的订餐地址" class="search-input" id="search_text" onkeydown="if(event.keyCode==13){zhuanli(); return false;}">
 						<button class="search-submit" onclick="zhuanli();return false;"><i class="Hui-iconfont"></i></button>
-					</div>
+				</div>
             </div>
 
 
@@ -70,7 +72,141 @@
                         <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备00000001号</a><br>
                     </p>
                 </div>
-            </footer>
+        </footer>
+
+        <!--弹窗表单 -->
+        <form action="" method="post" class="form form-horizontal responsive" id="demoform">
+            <div id="modaluserlogin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content radius">
+                        <div class="modal-header">
+                            <h3 class="modal-title">用户登录</h3>
+                            <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post" class="form form-horizontal responsive" id="demoform">
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">账号：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="text" class="input-text" autocomplete="off" placeholder="即手机号" name="telephone" id="telephone">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">密码：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password" id="password">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <div class="col-xs-8 col-xs-offset-3">
+                                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                                    </div>
+                                </div>
+                            </form>    
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <form action="" method="post" class="form form-horizontal responsive" id="demoform2">
+            <div id="modaluserreg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content radius">
+                        <div class="modal-header">
+                            <h3 class="modal-title">用户注册</h3>
+                            <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post" class="form form-horizontal responsive" id="demoform">
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">账号：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="text" class="input-text" autocomplete="off" placeholder="即手机号" name="telephone" id="telephone">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">密码：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password" id="password">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">密码验证：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password2" id="password2">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">单选框：</label>
+                                    <div class="formControls skin-minimal col-xs-5">
+                                        <div class="radio-box">
+                                            <input type="radio" id="sex-1" name="sex">
+                                            <label for="sex-1">男</label>
+                                        </div>
+                                        <div class="radio-box">
+                                            <input type="radio" id="sex-2" name="sex">
+                                            <label for="sex-2">女</label>
+                                        </div>
+                                        <div class="radio-box">
+                                            <input type="radio" id="sex-3" name="sex">
+                                            <label for="sex-3">保密</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <div class="col-xs-8 col-xs-offset-3">
+                                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;注册&nbsp;&nbsp;">
+                                    </div>
+                                </div>
+                            </form>    
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <form action="" method="post" class="form form-horizontal responsive" id="demoform3">
+                <div id="modalsellerlog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content radius">
+                            <div class="modal-header">
+                                <h3 class="modal-title">商家登录</h3>
+                                <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post" class="form form-horizontal responsive" id="demoform">
+                                    <div class="row cl">
+                                        <label class="form-label col-xs-3">账号：</label>
+                                        <div class="formControls col-xs-8">
+                                            <input type="text" class="input-text" autocomplete="off" placeholder="即手机号" name="telephone" id="telephone">
+                                        </div>
+                                    </div>
+                                    <div class="row cl">
+                                        <label class="form-label col-xs-3">密码：</label>
+                                        <div class="formControls col-xs-8">
+                                            <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password" id="password">
+                                        </div>
+                                    </div>
+                                    <div class="row cl">
+                                        <div class="col-xs-8 col-xs-offset-3">
+                                            <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;登录&nbsp;&nbsp;">
+                                        </div>
+                                    </div>
+                                </form>    
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+
 
     <!--引用js文件 -->
     <script type="text/javascript" src="./style/H-ui/lib/jquery/1.9.1/jquery.min.js"></script>
@@ -80,6 +216,280 @@
     <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
     <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
     <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+    <script>
+        //弹窗
+        function modaluserlogin(){
+            $("#modaluserlogin").modal("show");
+        }
+        function modaluserreg(){
+            $("#modaluserreg").modal("show");
+        }
 
+        function modalsellerlog(){
+            $("#modalsellerlog").modal("show");
+        }
+        //消息框
+        function modalalertdemo(){
+            $.Huimodalalert('我是消息框，2秒后我自动滚蛋！',2000);
+        }
+        $(function(){
+            $(".input-text,.textarea").Huifocusblur();
+            
+            //幻灯片
+            jQuery("#slider-3 .slider").slide({mainCell:".bd ul",titCell:".hd li",trigger:"click",effect:"leftLoop",autoPlay:true,delayTime:700,interTime:3000,pnLoop:false,titOnClassName:"active"});
+            
+            $(".panel").Huifold({
+                titCell:'.panel-header',
+                mainCell:'.panel-body',
+                type:1,
+                trigger:'click',
+                className:"selected",
+                speed:"first",
+            });
+            
+            //邮箱提示	
+            $("#email").emailsuggest();
+            
+            //checkbox 美化
+            $('.skin-minimal input').iCheck({
+                checkboxClass: 'icheckbox-blue',
+                radioClass: 'iradio-blue',
+                increaseArea: '20%'
+            });
+            
+            //日期插件
+            $("#datetimepicker").datetimepicker({
+                format: 'yyyy-mm-dd',
+                minView: "month",
+                todayBtn:  1,
+                autoclose: 1,
+                endDate : new Date()
+            }).on('hide',function(e) {
+                //此处可以触发日期校验。
+            });
+            
+            /*+1 -1效果*/
+            $("#spinner-demo").Huispinner({
+                value:1,
+                minValue:1,
+                maxValue:99,
+                dis:1
+            });
+            
+            $(".textarea").Huitextarealength({
+                minlength:10,
+                maxlength:200.
+            });
+            
+            $("#demoform,#demoform2,#demoform3").validate({
+                rules:{
+                    email:{
+                        required:true,
+                        email:true,
+                    },
+                    username:{
+                        required:true,
+                        minlength:4,
+                        maxlength:16
+                    },
+                    telephone:{
+                        required:true,
+                        isMobile:true,
+                    },
+                    password:{
+                        required:true,
+                        isPwd:true,
+                    },
+                    password2:{
+                        required:true,
+                        equalTo: "#password"
+                    },
+                    sex:{
+                        required:true,
+                    },
+                    datetimepicker:{
+                        required:true,	
+                    },
+                    checkbox2:{
+                        required:true,
+                    },
+                    city:{
+                        required:true,
+                    },
+                    website:{
+                        required:true,
+                        url:true,
+                    },
+                    beizhu:{
+                        maxlength:500,
+                    }
+                },
+                onkeyup:false,
+                focusCleanup:true,
+                success:"valid",
+                submitHandler:function(form){
+                    $("#modal-shenqing-success").modal("show");
+                    $(form).ajaxSubmit();
+                }
+            });
+            $("#demoform2").validate({
+                rules:{
+                    email:{
+                        required:true,
+                        email:true,
+                    },
+                    username:{
+                        required:true,
+                        minlength:4,
+                        maxlength:16
+                    },
+                    telephone:{
+                        required:true,
+                        isMobile:true,
+                    },
+                    password:{
+                        required:true,
+                        isPwd:true,
+                    },
+                    password2:{
+                        required:true,
+                        equalTo: "#password"
+                    },
+                    sex:{
+                        required:true,
+                    },
+                    datetimepicker:{
+                        required:true,	
+                    },
+                    checkbox2:{
+                        required:true,
+                    },
+                    city:{
+                        required:true,
+                    },
+                    website:{
+                        required:true,
+                        url:true,
+                    },
+                    beizhu:{
+                        maxlength:500,
+                    }
+                },
+                onkeyup:false,
+                focusCleanup:true,
+                success:"valid",
+                submitHandler:function(form){
+                    $("#modal-shenqing-success").modal("show");
+                    $(form).ajaxSubmit();
+                }
+            });
+            $("#demoform3").validate({
+                rules:{
+                    email:{
+                        required:true,
+                        email:true,
+                    },
+                    username:{
+                        required:true,
+                        minlength:4,
+                        maxlength:16
+                    },
+                    telephone:{
+                        required:true,
+                        isMobile:true,
+                    },
+                    password:{
+                        required:true,
+                        isPwd:true,
+                    },
+                    password2:{
+                        required:true,
+                        equalTo: "#password"
+                    },
+                    sex:{
+                        required:true,
+                    },
+                    datetimepicker:{
+                        required:true,	
+                    },
+                    checkbox2:{
+                        required:true,
+                    },
+                    city:{
+                        required:true,
+                    },
+                    website:{
+                        required:true,
+                        url:true,
+                    },
+                    beizhu:{
+                        maxlength:500,
+                    }
+                },
+                onkeyup:false,
+                focusCleanup:true,
+                success:"valid",
+                submitHandler:function(form){
+                    $("#modal-shenqing-success").modal("show");
+                    $(form).ajaxSubmit();
+                }
+            });
+
+            //选项卡
+            $("#HuiTab-demo1").Huitab({
+                index:0
+            });
+            
+            $("#Huitags-demo1").Huitags();
+            
+            //返回顶部
+            $.Huitotop();
+            
+            //hover效果
+            $('.maskWraper').Huihover();
+            
+            //星级评价
+            $("#star-1").raty({
+                hints: ['1','2', '3', '4', '5'],//自定义分数
+                starOff: 'iconpic-star-S-default.png',//默认灰色星星
+                starOn: 'iconpic-star-S.png',//黄色星星
+                path: 'static/h-ui/images/star',//可以是相对路径
+                number: 5,//星星数量，要和hints数组对应
+                showHalf: true,
+                targetKeep : true,
+                click: function (score, evt) {//点击事件
+                    //第一种方式：直接取值
+                    $("#result-1").html('你的评分是'+score+'分');
+                }
+            });
+        
+            $( ".ui-sortable" ).sortable({
+                //connectWith: ".panel",
+                items:".panel",
+                handle: ".panel-header",
+                //delay: 300, //时间延迟
+                //distance: 15, //距离延迟
+                placeholder: "ui-state-highlight", //占位符样式
+                update: function(event, ui){
+                    
+                }
+            }).disableSelection();
+
+            /*   
+            var _bodyHeight = $(window).height();
+            var _doch = $(document).height();
+            $(".containBox").height(_bodyHeight);
+            */
+            /*左右滑动菜单*/
+            $(".JS-nav-toggle").click(function() {
+                $("body").addClass('sideBox-open');
+                $(".containBox-bg").height(_bodyHeight).show();
+            });
+            $(".containBox-bg").click(function() {
+                $(this).hide();
+                $("body").removeClass('sideBox-open');
+            });
+        });
+        </script>
 </body>
 </html>
