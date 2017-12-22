@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/static/h-ui/css/H-ui.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/chb.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/shop-list.css" />
+    
+    <!--[if lt IE 9]>
+    <link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="text/css">
+        .ui-sortable .panel-header{ cursor:move}
+    </style>
+    <title>吃货宝-可能是湛江最菜的吃货订餐平台</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <meta name="description" content="”吃货宝”2017年创立于广东海洋大学，可能是海大领先的本地生活平台，截至目前，还在开发中2333333">
+    <meta name="keywords" content="吃货宝，网上订餐，外卖，快餐外卖，外卖网">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=72k77dZzkyRHVACpUju3vUMsbROEiRG8"></script> 
+</head>
+<body ontouchstart>
+        
+        <div id="l-map" style="display:none"></div>
+        <div class="containBox">
+            <header class="navbar-wrapper">
+                <div class="navbar navbar-logo navbar-fixed-top isnotindex" >
+                    <div class="container cl">
+                            <a class="logo navbar-logo f-l mr-10 hidden-xs" href="./index.html"><img src="./logo/logo.png" class="img-responsive" alt="chb"></a>
+                            <a  class="logo navbar-logo-m visible-xs" href="./index.html">吃货宝</a>
+                            <input type="text" placeholder="搜索商户" id="suggestId" class="search-input-text radius size-M">
+                            <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                            <button class="search-submit"><i class="Hui-iconfont"></i></button>
+                    </div>
+                </div>
+                <nav class="navbar-userbar f-r">
+                        <a href="#"  class="btn btn-primary radius" onClick="modaluserlogin()" >登录</a>
+                        <a href="#"  class="btn btn-success radius" onClick="modaluserreg()"  >注册</a>
+                        <a href="#"  class="btn btn-inverse radius" onClick="modalsellerlog()" >商家登录</a>                    
+                </nav>
+                <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+                        <ul class="cl">
+                            <li class="dropDown dropDown_hover"> 您好，<a href="#" class="dropDown_A">用户名 <i class="Hui-iconfont">&#xe6d5;</i></a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+            </header>
+
+
+            <div class="panel panel-default mt-20 ml-10 mr-10">
+				<div class="panel-body">
+					<table class="table chb-panel">
+						<tbody>
+							<tr  class="text-l">
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe681;</i>全部</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe72c;</i>快食简餐</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe659;</i>地方菜</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe657;</i>中式正餐</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe658;</i>烧烤海鲜</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe659;</i>甜点饮品</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe65e;</i>水果生鲜</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe662;</i>下午茶</a></td>
+                            </tr>							
+                            <tr  class="text-l">
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe668;</i>鲜花蛋糕</a></td>
+								<td><a href="#" class="chb-btn radius f-16"><i class="Hui-iconfont">&#xe663;</i>夜宵</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+            <div class="panel panel-default mt-20 ml-10 mr-10">
+                    <div class="btn-group ml-5">
+                        <span class="btn chb-btn" title="字体">默认</span>
+                        <span class="btn chb-btn" title="加粗">销量<i class="Hui-iconfont">&#xe674;</i></span>
+                        <span class="btn chb-btn" title="倾斜">评分<i class="Hui-iconfont">&#xe674;</i></span>
+                    </div>
+			</div>
+            <div class="panel panel-default mt-20 ml-10 mr-10 cl">
+				<div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>        
+                </div>
+				<div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+				<div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+				<div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>				
+                <div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+                <div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+                <div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+                <div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+                <div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+                <div class="album-item f-l ml-5 mr-5 mb-10" style="width:200px">
+					<div class="album-img">
+						<img src="imgs/food/dfc/bqj.png"> 
+					</div>
+                    <div class="album-title">黄焖鸡米饭<span class="c-999">（海大店）</span></div>
+                    <div class="album-title">月售<span class="c-999">2222份</span></div>    
+                </div>
+                
+			</div>
+
+
+
+            
+
+
+        </div>
+
+
+        <footer class="footer mt-20">
+                <div class="container-fluid ">
+                    <nav> <a href="#" target="_blank">关于我们</a> <span class="pipe">|</span> <a href="#" target="_blank">联系我们</a> <span class="pipe">|</span> <a href="#" target="_blank">法律声明</a> </nav>
+                    <p>Copyright &copy;2017 CHB All Rights Reserved. <br>
+                        <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备00000001号</a><br>
+                    </p>
+                </div>
+        </footer>
+
+        <!--弹窗表单 -->
+        <form action="" method="post" class="form form-horizontal responsive" id="demoform">
+            <div id="modaluserlogin" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content radius">
+                        <div class="modal-header">
+                            <h3 class="modal-title">用户登录</h3>
+                            <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                        </div>
+                        <div class="modal-body">
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">账号：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="text" class="input-text" autocomplete="off" placeholder="即手机号" name="telephone" id="telephone">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">密码：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password" id="password">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <div class="col-xs-8 col-xs-offset-3">
+                                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <form action="" method="post" class="form form-horizontal responsive" id="demoform2">
+            <div id="modaluserreg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content radius">
+                        <div class="modal-header">
+                            <h3 class="modal-title">用户注册</h3>
+                            <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                        </div>
+                        <div class="modal-body">
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">手机号码：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="text" class="input-text" autocomplete="off" placeholder="您的手机号" name="telephone" id="telephone">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">密码：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password" id="password">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">密码验证：</label>
+                                    <div class="formControls col-xs-8">
+                                        <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password2" id="password2">
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <label class="form-label col-xs-3">单选框：</label>
+                                    <div class="formControls skin-minimal col-xs-5">
+                                        <div class="radio-box">
+                                            <input type="radio" id="sex-1" name="sex">
+                                            <label for="sex-1">男</label>
+                                        </div>
+                                        <div class="radio-box">
+                                            <input type="radio" id="sex-2" name="sex">
+                                            <label for="sex-2">女</label>
+                                        </div>
+                                        <div class="radio-box">
+                                            <input type="radio" id="sex-3" name="sex">
+                                            <label for="sex-3">保密</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row cl">
+                                    <div class="col-xs-8 col-xs-offset-3">
+                                        <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;注册&nbsp;&nbsp;">
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <form action="" method="post" class="form form-horizontal responsive" id="demoform3">
+                <div id="modalsellerlog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content radius">
+                            <div class="modal-header">
+                                <h3 class="modal-title">商家登录</h3>
+                                <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                            </div>
+                            <div class="modal-body">
+                                    <div class="row cl">
+                                        <label class="form-label col-xs-3">账号：</label>
+                                        <div class="formControls col-xs-8">
+                                            <input type="text" class="input-text" autocomplete="off" placeholder="即手机号" name="telephone" id="telephone">
+                                        </div>
+                                    </div>
+                                    <div class="row cl">
+                                        <label class="form-label col-xs-3">密码：</label>
+                                        <div class="formControls col-xs-8">
+                                            <input type="password" class="input-text" autocomplete="off" placeholder="密码" name="password" id="password">
+                                        </div>
+                                    </div>
+                                    <div class="row cl">
+                                        <div class="col-xs-8 col-xs-offset-3">
+                                            <input class="btn btn-primary" type="submit" value="&nbsp;&nbsp;登录&nbsp;&nbsp;">
+                                            <input class="btn btn-primary" type="button" onclick="window.location='sellerreg.html'" value="&nbsp;&nbsp;注册&nbsp;&nbsp;">
+                                            
+                                        </div>
+                                    </div> 
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+
+
+    <!--引用js文件 -->
+    <script type="text/javascript" src="./style/H-ui/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery-ui/1.9.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/static/h-ui/js/H-ui.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+    <script>
+        
+	// 百度地图API功能
+	function G(id) {
+		return document.getElementById(id);
+	}
+
+	var map = new BMap.Map("l-map");
+	var point = new BMap.Point(110.3090339940,21.1515381533);
+	map.centerAndZoom(point,15);
+
+	function myFun(result){
+		var cityName = result.name;
+		map.setCenter(cityName);
+		$("#dw").text(cityName);
+	}
+	var myCity = new BMap.LocalCity();
+    myCity.get(myFun);
+    
+	var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+		{"input" : "suggestId"
+		,"location" : map
+	});
+
+	ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+	var str = "";
+		var _value = e.fromitem.value;
+		var value = "";
+		if (e.fromitem.index > -1) {
+			value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		}    
+		str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+		
+		value = "";
+		if (e.toitem.index > -1) {
+			_value = e.toitem.value;
+			value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		}    
+		str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+		G("searchResultPanel").innerHTML = str;
+	});
+
+	var myValue;
+	ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+	var _value = e.item.value;
+		myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+		
+		setPlace();
+	});
+    
+    
+	function setPlace(){
+		map.clearOverlays();    //清除地图上所有覆盖物
+		function myFun(){
+			var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+			map.centerAndZoom(pp, 18);
+			map.addOverlay(new BMap.Marker(pp));    //添加标注
+		}
+		var local = new BMap.LocalSearch(map, { //智能搜索
+		  onSearchComplete: myFun
+		});
+		local.search(myValue);
+	}
+
+        //弹窗
+        function modaluserlogin(){
+            $("#modaluserlogin").modal("show");
+        }
+        function modaluserreg(){
+            $("#modaluserreg").modal("show");
+        }
+
+        function modalsellerlog(){
+            $("#modalsellerlog").modal("show");
+        }
+        //消息框
+        function modalalertdemo(){
+            $.Huimodalalert('我是消息框，2秒后我自动滚蛋！',2000);
+        }
+        $(function(){
+            $(".input-text,.textarea").Huifocusblur();
+            
+            //幻灯片
+            jQuery("#slider-3 .slider").slide({mainCell:".bd ul",titCell:".hd li",trigger:"click",effect:"leftLoop",autoPlay:true,delayTime:700,interTime:3000,pnLoop:false,titOnClassName:"active"});
+            
+            $(".panel").Huifold({
+                titCell:'.panel-header',
+                mainCell:'.panel-body',
+                type:1,
+                trigger:'click',
+                className:"selected",
+                speed:"first",
+            });
+            
+            //邮箱提示	
+            $("#email").emailsuggest();
+            
+            //checkbox 美化
+            $('.skin-minimal input').iCheck({
+                checkboxClass: 'icheckbox-blue',
+                radioClass: 'iradio-blue',
+                increaseArea: '20%'
+            });
+            
+            //日期插件
+            $("#datetimepicker").datetimepicker({
+                format: 'yyyy-mm-dd',
+                minView: "month",
+                todayBtn:  1,
+                autoclose: 1,
+                endDate : new Date()
+            }).on('hide',function(e) {
+                //此处可以触发日期校验。
+            });
+            
+            /*+1 -1效果*/
+            $("#spinner-demo").Huispinner({
+                value:1,
+                minValue:1,
+                maxValue:99,
+                dis:1
+            });
+            
+            $(".textarea").Huitextarealength({
+                minlength:10,
+                maxlength:200.
+            });
+            
+            $("#demoform ").validate({
+                rules:{
+                    telephone:{
+                        required:true,
+                        isMobile:true,
+                    },
+                    password:{
+                        required:true,
+                        isPwd:true,
+                    },
+                },
+                onkeyup:false,
+                focusCleanup:true,
+                success:"valid",
+                submitHandler:function(form){
+                    $("#modal-shenqing-success").modal("show");
+                    $(form).ajaxSubmit();
+                }
+            });
+            $("#demoform2").validate({
+                rules:{
+                    telephone:{
+                        required:true,
+                        isMobile:true,
+                    },
+                    password:{
+                        required:true,
+                        isPwd:true,
+                    },
+                    password2:{
+                        required:true,
+                        equalTo: "#password"
+                    },
+                    sex:{
+                        required:true,
+                    },
+                },
+                onkeyup:false,
+                focusCleanup:true,
+                success:"valid",
+                submitHandler:function(form){
+                    $("#modal-shenqing-success").modal("show");
+                    $(form).ajaxSubmit();
+                }
+            });
+            $("#demoform3").validate({
+                rules:{
+                    telephone:{
+                        required:true,
+                        isMobile:true,
+                    },
+                    password:{
+                        required:true,
+                        isPwd:true,
+                    },
+                },
+                onkeyup:false,
+                focusCleanup:true,
+                success:"valid",
+                submitHandler:function(form){
+                    $("#modal-shenqing-success").modal("show");
+                    $(form).ajaxSubmit();
+                }
+            });
+
+
+            $("#demoform4").validate({
+                rules:{
+                    username:{
+                        required:true,
+                        minlength:2,
+                        maxlength:8
+                    },
+                    telephone:{
+                        required:true,
+                        isMobile:true,
+                    },
+                    password:{
+                        required:true,
+                        isPwd:true,
+                    },
+                    password2:{
+                        required:true,
+                        equalTo: "#password"
+                    },
+                    realname:{
+                        isChinese:true,
+                        required:true,
+                        minlength:2,
+                        maxlength:8
+                    },
+                    IdCardNo:{
+                        isIdCardNo:true
+                    },
+                    shopertype:{
+                        required:true,
+                    },
+                    datetimepicker:{
+                        required:true,	
+                    },
+                    checkbox2:{
+                        required:true,
+                    },
+                    city:{
+                        required:true,
+                    },
+                    website:{
+                        required:true,
+                        url:true,
+                    },
+                    beizhu:{
+                        maxlength:500,
+                    }
+                },
+                onkeyup:false,
+                focusCleanup:true,
+                success:"valid",
+                submitHandler:function(form){
+                    $("#modal-shenqing-success").modal("show");
+                    $(form).ajaxSubmit();
+                }
+            });
+
+
+            //选项卡
+            $("#HuiTab-demo1").Huitab({
+                index:0
+            });
+            
+            $("#Huitags-demo1").Huitags();
+            
+            //返回顶部
+            $.Huitotop();
+            
+            //hover效果
+            $('.maskWraper').Huihover();
+            
+            //星级评价
+            $("#star-1").raty({
+                hints: ['1','2', '3', '4', '5'],//自定义分数
+                starOff: 'iconpic-star-S-default.png',//默认灰色星星
+                starOn: 'iconpic-star-S.png',//黄色星星
+                path: 'static/h-ui/images/star',//可以是相对路径
+                number: 5,//星星数量，要和hints数组对应
+                showHalf: true,
+                targetKeep : true,
+                click: function (score, evt) {//点击事件
+                    //第一种方式：直接取值
+                    $("#result-1").html('你的评分是'+score+'分');
+                }
+            });
+        
+            $( ".ui-sortable" ).sortable({
+                //connectWith: ".panel",
+                items:".panel",
+                handle: ".panel-header",
+                //delay: 300, //时间延迟
+                //distance: 15, //距离延迟
+                placeholder: "ui-state-highlight", //占位符样式
+                update: function(event, ui){
+                    
+                }
+            }).disableSelection();
+
+            /*   
+            var _bodyHeight = $(window).height();
+            var _doch = $(document).height();
+            $(".containBox").height(_bodyHeight);
+            */
+            /*左右滑动菜单*/
+            $(".JS-nav-toggle").click(function() {
+                $("body").addClass('sideBox-open');
+                $(".containBox-bg").height(_bodyHeight).show();
+            });
+            $(".containBox-bg").click(function() {
+                $(this).hide();
+                $("body").removeClass('sideBox-open');
+            });
+        });
+        </script>
+</body>
+</html>

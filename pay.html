@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/static/h-ui/css/H-ui.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/chb.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/shop-list.css" />
+    
+    <!--[if lt IE 9]>
+    <link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="text/css">
+        .ui-sortable .panel-header{ cursor:move}
+    </style>
+    <title>吃货宝-可能是湛江最菜的吃货订餐平台</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <meta name="description" content="”吃货宝”2017年创立于广东海洋大学，可能是海大领先的本地生活平台，截至目前，还在开发中2333333">
+    <meta name="keywords" content="吃货宝，网上订餐，外卖，快餐外卖，外卖网">
+    <script src="./js/angular.min.js"></script> 
+</head>
+<body ontouchstart  ng-app="pay" ng-controller="myCtrl">
+        
+        <div id="l-map" style="display:none"></div>
+        <div class="containBox">
+            <header class="navbar-wrapper">
+                <div class="navbar navbar-logo navbar-fixed-top isnotindex" >
+                    <div class="container cl">
+                            <a class="logo navbar-logo f-l mr-10 hidden-xs" href="./index.html"><img src="./logo/logo.png" class="img-responsive" alt="chb"></a>
+                            <a  class="logo navbar-logo-m visible-xs" href="./index.html">吃货宝</a>
+                    </div>
+                </div>
+                <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+                        <ul class="cl">
+                            <li class="dropDown dropDown_hover"> 您好，<a href="#" class="dropDown_A">用户名 <i class="Hui-iconfont">&#xe6d5;</i></a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+            </header>
+
+            <div class="panel panel-default mt-20 ml-10 mr-10">
+                <form action="">
+
+                    <div class="panel-body cl">
+                        <div class="l shopInfo">
+                            <table class="table" style="width:50%">
+                                <tbody>
+                                    <tr>
+                                      <th class="text-c f-20" >菜品</th>
+                                      <th class="text-c f-20" >数量</th>
+                                      <th class="text-c f-20" >价格</th>
+                                    </tr>
+                                    <tr ng-repeat="g in items">
+                                      <td class="text-l" >
+                                        <input type="text" class="input-text radius" value="{{g.name}}" readonly name="" id="">  
+                                        </td>
+                                      <td class="text-c" >
+                                        <input type="text" class="input-text radius" value=" {{g.goodNum}}" readonly  name="" id="">
+                                       
+                                      </td>
+                                      <td>￥
+                                        <input type="text" class="input-text radius" value="{{g.goodPrice|number:2}}" readonly name="" id="">  
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-l f-15" >配送费</td>
+                                      <td ></td>
+                                      <td>￥{{pt[0]}}</td>
+                                    </tr>
+                                     <tr>
+                                      <td class="text-l f-15" >起送价</td>
+                                      <td ></td>
+                                      <td>￥{{pt[2]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-r f-30" >总计</td>
+                                      <td class="text-l c-red f-30" colspan="2"><strong>￥{{pt[1]}}</strong></td>
+                                    </tr>
+                                  </tbody>
+                                  <!--想拿shopID的话直接用{{pt[4]}}-->
+                            </table>
+                        </div>
+                        <div class="r ml-10" style="width:50%">
+                            <dl>
+                                <dt class="text-l shopTitle">
+                                    <h2>收货人信息：</h2>
+                                </dt>
+                            </dl>
+                            <dl class="mt-10">
+                                <dt class="f-20">
+                                    姓名：
+                                </dt>
+                                <dd>
+                                    <span class="select-box radius mt-100 ">
+                                            <select class="select c-red" size="1" name="">
+                                                <option value="" selected="">张大涛</option>
+                                                <option value="1">菜单一</option>
+                                                <option value="2">菜单二</option>
+                                                <option value="3">菜单三</option>
+                                            </select>
+                                    </span>
+                                </dd>
+                            </dl>
+                            <dl class="mt-5">
+                                <dt class="f-20">
+                                    联系电话：
+                                </dt>
+                                <dd >
+                                    <input type="text"  class="input-text radius c-red f-20" readonly value="54653132123" name="" id="">
+                                </dd>
+                            </dl>
+                            <dl class="mt-5">
+                                <dt class="f-20">
+                                    收货地址:                            
+                                </dt>
+                            <dd >
+                                <input type="text"  class="input-text radius c-red f-20" readonly value="湛江市麻章区湖光镇湖光市场一楼烧腊行1号" name="" id="">                                    
+                            </dd>
+                        </dl> 
+                        </div>
+                    </div>
+                    <input type="submit" class="mt-10 btn btn-primary radius" value="去支付">
+                </form>
+            </div>
+            </div>
+        <footer class="footer mt-20">
+                <div class="container-fluid ">
+                    <nav> <a href="#" target="_blank">关于我们</a> <span class="pipe">|</span> <a href="#" target="_blank">联系我们</a> <span class="pipe">|</span> <a href="#" target="_blank">法律声明</a> </nav>
+                    <p>Copyright &copy;2017 CHB All Rights Reserved. <br>
+                        <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备00000001号</a><br>
+                    </p>
+                </div>
+        </footer>
+
+    <!--引用js文件 -->
+    <script type="text/javascript" src="./style/H-ui/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery-ui/1.9.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/static/h-ui/js/H-ui.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+
+    <script type="text/javascript">
+        /*angular*/
+        var goodlist = JSON.parse(localStorage.getItem("goodlist"));
+        var PT = JSON.parse(localStorage.getItem("PT"));
+       var app=angular.module("pay",[]);  
+       app.controller("myCtrl",function($scope){  
+          $scope.items=goodlist;
+          $scope.pt=PT;
+       })  
+        /*angular-End*/
+
+        $(function(){
+            $(".input-text,.textarea").Huifocusblur();
+            
+            $(".panel").Huifold({
+                titCell:'.panel-header',
+                mainCell:'.panel-body',
+                type:1,
+                trigger:'click',
+                className:"selected",
+                speed:"first",
+            });
+            
+            //checkbox 美化
+            $('.skin-minimal input').iCheck({
+                checkboxClass: 'icheckbox-blue',
+                radioClass: 'iradio-blue',
+                increaseArea: '20%'
+            });
+            
+            //返回顶部
+            $.Huitotop();
+
+            
+            $('.goodList').show(1000);
+        });
+        </script>
+</body>
+</html>

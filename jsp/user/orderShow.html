@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../lib/html5.js"></script>
+<script type="text/javascript" src="../lib/respond.min.js"></script>
+<![endif]-->
+<link href="../static/h-ui/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="../static/h-ui.admin/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="../lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script><![endif]-->
+<title>订单查看</title>
+</head>
+<body>
+<div class="cl pd-20" style=" background-color:#5bacb6">
+  <img class="avatar size-XL l" src="C:\Users\someCat\Desktop\CHB\imgs\food\dfc\bqj.png">
+  <dl style="margin-left:80px; color:#fff">
+    <dt><span class="f-18">伟记鸡扒店</span> <span class="pl-10 f-12">商家电话：12345678900</span></dt>
+    <dd class="pt-10 f-12" style="margin-left:0">广东省湛江市麻章区海大路一号</dd>
+  </dl>
+</div>
+<div class="pd-20">
+  <!-- 订单的商品费用表-->
+  <table class="table table-border table-bordered table-striped ordertable">
+    <tbody>
+      <tr>
+        <th class="text-r" >奥尔良鸡扒拼茄子饭+饮品</th>
+        <td class="text-c" >1</td>
+        <td>￥32.8</td>
+      </tr>
+      <tr>
+        <th class="text-r" >奥尔良鸡扒拼茄子饭+饮品</th>
+        <td class="text-c" >1</td>
+        <td>￥32.8</td>
+      </tr>
+      <tr>
+        <th class="text-r" >奥尔良鸡扒拼茄子饭+饮品</th>
+        <td class="text-c" >1</td>
+        <td>￥32.8</td>
+      </tr>
+      <tr>
+        <th class="text-r" >餐盒费</th>
+        <td ></td>
+        <td>￥2</td>
+      </tr>
+      <tr>
+        <th class="text-r" >配送费</th>
+        <td ></td>
+        <td>￥4</td>
+      </tr>
+      <tr>
+        <th ></th>
+        <td class="text-r" >总计</td>
+        <td class="text-l c-red" ><strong>￥330</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 订单的商品费用表结束-->
+
+  <!-- 订单的交付详情表-->
+
+  <table class="table table-border table-bordered table-striped">
+    <tbody>
+      <tr>
+        <th>订单状态: <strong class="c-red">已完成</strong></th>
+      </tr>
+      <tr>
+          <th>送餐地址：<strong>彩荟阁 10楼C室</strong></th>
+      </tr>
+      <tr>
+          <th>联系人： <strong>张涛先生</strong></th>
+      </tr>
+      <tr>
+          <th>电话: <strong>134*****155</strong></th>
+      </tr>      
+      <tr>
+          <th>送达时间： <strong>2017/08/23 立即配送</strong></th>
+      </tr>
+    </tbody>
+  </table>
+  <!-- 订单的交付详情表结束-->
+
+  <!-- 订单操作按钮-->
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <input class="btn radius btn-warning" type="button" value="催单"  onClick="showphone()">
+          <input class="btn btn-danger radius" type="button" value="退单">
+          <input class="btn btn-success radius" type="button" value="确认送达">
+          <input class="btn radius btn-secondary" type="button" value="评价" onClick="orderEva_show('编辑','orderEva.html','4','','510')">
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <!-- 订单操作按钮结束-->
+</div>
+
+<!--弹出商家电话-->
+<div id="showphone" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content radius">
+        <div class="modal-header">
+          <h3 class="modal-title">这么慢！催他！</h3>
+          <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+        </div>
+        <div class="modal-body text-c">
+          <h2>催单电话:<span>12345678900</span></h2>
+        </div>
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="../lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="../static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="../static/h-ui.admin/js/H-ui.admin.page.js"></script>
+<!--/_footer /作为公共模版分离出去-->
+<script>
+//弹窗
+function showphone(){
+          $("#showphone").modal("show");
+      }
+      /*订单-查看*/
+function orderEva_show(title,url,id,w,h){
+	layer_show(title,url,w,h);
+}
+</script>
+</body>
+</html>

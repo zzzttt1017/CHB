@@ -4470,7 +4470,7 @@ function displaynavbar(obj){
 					} else {
 						$(this).next().slideUp(options.speed).end().removeClass(options.className);
 						if ($(this).find("b")) {
-							$(this).find("b").html("+");
+							$(this).find("b").html("<i class='Hui-iconfont'>&#xe670;</i>");
 						}
 					}
 				}else {
@@ -4483,7 +4483,7 @@ function displaynavbar(obj){
 						that.find(options.mainCell).slideUp(options.speed);
 						that.find(options.titCell).removeClass(options.className);
 						if (that.find(options.titCell).find("b")) {
-							that.find(options.titCell).find("b").html("+");
+							that.find(options.titCell).find("b").html("<i class='Hui-iconfont'>&#xe670;</i>");
 						}
 						$(this).next().slideDown(options.speed).end().addClass(options.className);
 						if ($(this).find("b")) {

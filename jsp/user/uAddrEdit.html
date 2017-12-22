@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="Bookmark" href="../../favicon.ico" >
+<link rel="Shortcut Icon" href="../../favicon.ico" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="../lib/html5.js"></script>
+<script type="text/javascript" src="../lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="../static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="../lib/Hui-iconfont/1.0.8/iconfont.css" />
+
+<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="../static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script><![endif]-->
+
+<title>送餐地址管理-用户中心</title>
+<meta name="description" content="”吃货宝”2017年创立于广东海洋大学，可能是海大领先的本地生活平台，截至目前，还在开发中2333333">
+<meta name="keywords" content="吃货宝，网上订餐，外卖，快餐外卖，外卖网">
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=72k77dZzkyRHVACpUju3vUMsbROEiRG8"></script> 
+</head>
+<body>
+	<div class="Hui-article">
+            <article class="cl pd-20">
+                    <form action="" method="post" class="form form-horizontal" id="form-member-edit">
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="username" name="username">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
+                            <div class="formControls col-xs-8 col-sm-9">
+                                <input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="mobile" name="mobile">
+                            </div>
+                        </div>
+                        <div class="row cl">
+                                <div id="allmap" style="width:50%;height:200px;margin:10px auto;"></div>
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>送餐地址：</label>
+                                <div class="formControls col-xs-8 col-sm-9">
+                                        <input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="address" name="address">
+                                </div>
+                        </div>
+                        <div class="row cl">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>门牌号：</label>
+                                <div class="formControls col-xs-8 col-sm-9">
+                                        <input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="houseNum" name="houseNum">
+                                </div>
+                                    <!--经度-->
+                                    <input type="hidden" name="lng" id="lng">
+                                    <!--纬度-->                                            
+                                    <input type="hidden" name="lat" id="lat">
+                        </div>
+                        <div class="row cl">
+                            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                            </div>
+                        </div>
+                    </form>
+                </article>
+
+	</div>
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="../lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="../lib/layer/2.4/layer.js"></script> 
+ 
+<script type="text/javascript" src="../lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="../lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="../lib/jquery.validation/1.14.0/messages_zh.js"></script> 
+<script type="text/javascript" src="../static/h-ui/js/H-ui.js"></script> 
+<script type="text/javascript" src="../static/h-ui.admin/js/H-ui.admin.page.js"></script> 
+
+<!--/_footer /作为公共模版分离出去-->
+<script type="text/javascript">
+$(function(){
+    $('.skin-minimal input').iCheck({
+        checkboxClass: 'icheckbox-blue',
+        radioClass: 'iradio-blue',
+        increaseArea: '20%'
+    });
+    
+    $("#form-member-edit").validate({
+        rules:{
+            username:{
+                required:true,
+                minlength:2,
+                maxlength:16
+            },
+            sex:{
+                required:true,
+            },
+            mobile:{
+                required:true,
+                isMobile:true,
+            },
+            uploadfile:{
+                required:true,
+            },
+            houseNum:{
+                required:true,
+            },            
+            address:{
+                required:true,
+            },
+            
+        },
+        onkeyup:true,
+        focusCleanup:true,
+        success:"valid",
+        submitHandler:function(form){
+            $(form).ajaxSubmit();
+            var index = parent.layer.getFrameIndex(window.name);
+            parent.$('.btn-refresh').click();
+            parent.layer.close(index);
+        }
+    });
+
+    
+		// 百度地图API功能
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point(110.3090339940,21.1515381533);
+	map.enableScrollWheelZoom(true);
+	map.centerAndZoom(point,18);
+	var geoc = new BMap.Geocoder();    
+
+	map.addEventListener("click", function(e){        
+		var pt = e.point;
+		geoc.getLocation(pt, function(rs){
+			var addComp = rs.addressComponents;
+			var sAddress = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber
+			$('#address').attr('value',sAddress);
+            //鼠标拾取经纬度
+            map.addEventListener("click",function(e){
+                $('#lng').attr('value',e.point.lng);
+				$('#lat').attr('value',e.point.lat);
+	        });
+		});        
+	});
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

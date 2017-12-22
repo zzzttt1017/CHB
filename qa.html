@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/static/h-ui/css/H-ui.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/chb.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/shop-list.css" />
+    
+    <!--[if lt IE 9]>
+    <link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="text/css">
+        .ui-sortable .panel-header{ cursor:move}
+    </style>
+    <title>吃货宝-可能是湛江最菜的吃货订餐平台</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <meta name="description" content="”吃货宝”2017年创立于广东海洋大学，可能是海大领先的本地生活平台，截至目前，还在开发中2333333">
+    <meta name="keywords" content="吃货宝，网上订餐，外卖，快餐外卖，外卖网">
+</head>
+<body ontouchstart>
+        <div id="l-map" style="display:none"></div>
+        <div class="containBox">
+            <header class="navbar-wrapper">
+                <div class="navbar navbar-logo navbar-fixed-top isnotindex" >
+                    <div class="container cl">
+                            <a class="logo navbar-logo f-l mr-10 hidden-xs" href="./index.html"><img src="./logo/logo.png" class="img-responsive" alt="chb"></a>
+                            <a  class="logo navbar-logo-m visible-xs" href="./index.html">吃货宝</a>
+                    </div>
+                </div>
+                <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+                        <ul class="cl">
+                            <li class="dropDown dropDown_hover"> 您好，<a href="#" class="dropDown_A">用户名 <i class="Hui-iconfont">&#xe6d5;</i></a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+            </header>
+        </div>
+        <div class="row cl">
+            <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-c mt-20 f-30">吃货宝Q&A</div>
+        </div>
+        <div class="panel panel-primary cl">
+            <div class="panel-header">Q1：外卖接受电话订餐吗？</div>
+            <div class="panel-body f-20">A1：只接受网上订餐，暂不接受电话订餐。</div>
+        </div>
+        <div class="panel panel-primary cl">
+            <div class="panel-header">Q2：下单后，怎么知道自己下单是否成功？</div>
+            <div class="panel-body f-20">A2：下单后，页面会显示下单成功，同时用户会收到商家是否已接单的相关提示。</div>
+        </div>
+        <div class="panel panel-primary cl">
+            <div class="panel-header">Q3：订餐时间是多少？</div>
+            <div class="panel-body f-20">A3：由商家定。</div>
+        </div>
+
+        <div class="panel panel-success cl">
+            <div class="panel-header text-r">Q1：如何查询订单？</div>
+            <div class="panel-body f-20 text-r">A1：登录后，进入个人中心中的我的订单，即可查询订单的信息</div>
+        </div>     
+        <div class="panel panel-success cl">
+            <div class="panel-header text-r">Q2：外卖需要多久才能送到？</div>
+            <div class="panel-body f-20 text-r">A2: 可以参考下单餐厅给出的相关配送时间，如遇到用餐高峰与恶劣天气等不可抗拒因素时，送餐时间将会有延长，建议提前一至两小时预订您的外卖，以便外卖尽早为您送达。            </div>
+        </div>  
+        <div class="panel panel-warning cl">
+            <div class="panel-header">Q1：在线支付后，取消订单后，钱怎么返还？</div>
+            <div class="panel-body f-20">A1：订单取消后，退款将会在一个工作日内，直接返还到易宝账户内。</div>
+        </div>  
+        <div class="panel panel-warning cl">
+            <div class="panel-header">Q2：怎么查看退款是否成功？</div>
+            <div class="panel-body f-20">A2：退款会在一个工作日之内到您的易宝支付的账户内，您可以去易宝支付查看是否到账。            </div>
+        </div> 
+
+        <div class="panel panel-success cl">
+            <div class="panel-header text-r">Q1：入驻吃货宝需要哪些条件？</div>
+            <div class="panel-body f-20 text-r">A1：需要符合国家法律法规要求的经营许可证照吧，包括营业执照、餐饮服务许可证等。            </div>
+        </div>
+        <div class="panel panel-success cl">
+            <div class="panel-header text-r">Q2:提交入驻申请后多久会得到回复？            </div>
+            <div class="panel-body f-20 text-r">A2：填写入驻申请表提交成功之后，如果资料审核通过，吃货宝工作人员会在7个工作日之内跟商家取得联系。            </div>
+        </div>
+        <div class="panel panel-success cl">
+            <div class="panel-header text-r">Q3：加入吃货宝的流程是怎样的？            </div>
+            <div class="panel-body f-20 text-r">A3：从吃货宝首页选择：商家登录→商家注册，进入商家入驻页面，按照要求填写表格，提交成功并通过审核后会与商家取得联系，然后签约上线。            </div>
+        </div> 
+
+        <div class="panel panel-danger cl">
+            <div class="panel-header">Q1：忘记密码怎么办？</div>
+            <div class="panel-body f-20">A1：通过手机进行验证</div>
+        </div>
+        <footer class="footer mt-20">
+                <div class="container-fluid ">
+                    <nav> <a href="#" target="_blank">关于我们</a> <span class="pipe">|</span> <a href="#" target="_blank">联系我们</a> <span class="pipe">|</span> <a href="#" target="_blank">法律声明</a> </nav>
+                    <p>Copyright &copy;2017 CHB All Rights Reserved. <br>
+                        <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备00000001号</a><br>
+                    </p>
+                </div>
+        </footer>
+
+    <!--引用js文件 -->
+    <script type="text/javascript" src="./style/H-ui/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery-ui/1.9.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/static/h-ui/js/H-ui.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function(){
+            $(".input-text,.textarea").Huifocusblur();
+            
+            $(".panel").Huifold({
+                titCell:'.panel-header',
+                mainCell:'.panel-body',
+                type:1,
+                trigger:'click',
+                className:"selected",
+                speed:"first",
+            });
+            
+            //checkbox 美化
+            $('.skin-minimal input').iCheck({
+                checkboxClass: 'icheckbox-blue',
+                radioClass: 'iradio-blue',
+                increaseArea: '20%'
+            });
+            
+            //返回顶部
+            $.Huitotop();
+
+            
+            $('.goodList').show(1000);
+        });
+        </script>
+</body>
+</html>

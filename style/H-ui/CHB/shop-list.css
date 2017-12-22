@@ -1,0 +1,170 @@
+/*shop-list*/
+.chb-panel {
+    background-color: #FAFAFA;
+    border: none;
+}
+.chb-panel tbody tr td{
+    float:left;
+    margin-right: 10px;
+}
+
+
+.chb-btn {
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 400;
+    white-space: nowrap;
+    vertical-align: middle;
+    -moz-padding-start: npx;
+    -moz-padding-end: npx;
+    width: auto;
+    -webkit-transition: background-color .1s linear;
+    -moz-transition: background-color .1s linear;
+    -o-transition: background-color .1s linear;
+    transition: background-color .1s linear;
+}
+
+.chb-btn:hover, .chb-btn:focus, .chb-btn:active, .chb-btn.active {
+    color: #ff2d4b;
+    text-decoration: none;
+}
+
+.panel {
+    background-color: #fff;
+    margin: 10px auto;
+    border: 0;
+}
+
+.panel-body {
+    background-color: #fafafa;
+}
+
+@media ( min-width : 1062px) {
+	.panel{width: 1030px}
+}
+@media ( min-width : 1200px) {
+	.panel {width: 1170px}
+}
+@media ( min-width : 1300px) {
+	.panel {width: 1270px}
+}
+
+.search-input-text{
+    box-sizing: border-box;
+    border: solid 1px #ddd;
+    -webkit-transition: all 0.2s linear 0s;
+    -moz-transition: all 0.2s linear 0s;
+    -o-transition: all 0.2s linear 0s;
+    transition: all 0.2s linear 0s;
+}
+
+.search-input-text, .search-input-text.size-M, .btn.size-M {
+    font-size: 14px;
+    height: 31px;
+    line-height: 1.42857;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.container .search-submit {
+    position: absolute;
+    top: 9px;
+    width: 33px;
+    height: 33px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0);
+}
+
+.album-title {
+    display: block;
+    text-align: center;
+    padding: 7px 5px;
+    line-height: 18px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 15px;
+    border: solid 1px #e0e0e0;
+    border-top: 0;
+    overflow: hidden;
+}
+
+.m-a{
+    margin: 0 auto;
+}
+
+
+.ordertable tbody tr th:nth-child(1){
+    width: 40%;
+}
+
+.ordertable tbody tr th:nth-child(2){
+    width: 30%;
+}
+
+.ordertable tbody tr th:nth-child(3){
+    width: 30%;
+}
+
+
+
+/*点餐页*/
+.s-img{
+    width: 198px;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+}
+
+.shopInfo{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.shopTitle{
+    margin-top: -20px;
+}
+
+.sQisongjia{
+    border-left: solid 1px #999;
+}
+
+.pf{
+    position: fixed;
+    bottom:0;
+}
+
+.dual_con {
+    border: #CCC solid 1px;
+    width: 250px;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+}
+
+.dual{
+    top:auto;
+    z-index: 1033;
+    width: 300px;
+}
+
+.goodMinusNum,.goodAddNum{
+    width: 15px;
+    background: none;
+    border: none;
+    font-size: 15px;    
+}
+
+.goodNum{
+    width:15px;
+    border:none;
+    padding: 3px 0 0 7px;
+}

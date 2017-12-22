@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* 你自己的样式 */
+
+
+/*导航条风格-百度红*/
+.navbar-logo{background-color:#ff2d4b;opacity: .8;}
+.navbar-logo .logo{ color: #fff }
+.navbar-logo .navbar-logo-m{color: #eee}
+.navbar-logo .navbar-nav > ul > li,
+.navbar-logo .navbar-nav > ul > li > a{ color:#fff}
+.navbar-logo .navbar-nav > ul > li > a:hover,
+.navbar-logo .navbar-nav > ul > li.current > a{color:#fff}
+.navbar-logo .navbar-userbar{ color: #fff}
+@media (max-width: 767px) {
+  .navbar-logo .navbar-nav > ul > li{border-bottom: solid 1px #222}
+  .navbar-logo .navbar-nav > ul > li > a:hover,
+  .navbar-logo .navbar-nav > ul > li.current > a{ background: #777}
+}
+
+.headerbgc{
+    background-color: #ff2d4b;
+    opacity: .8;
+}
+
+.c-orange{
+    color: #000000;
+    font-weight: 800;
+}
+
+.ordertable tbody tr td{
+    width: 33%;
+}
+
+.ordertable tbody tr th{
+    width: 33%;
+}
+
+.ordertable{
+    margin-bottom: 10px;
+}
+
+#menu-address a{
+    color:#333;
+    text-decoration: none;
+}
+
+#menu-address a:hover{
+    color: #148cf1;
+}
+

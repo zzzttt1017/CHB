@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit|ie-comp|ie-stand">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5shiv.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/static/h-ui/css/H-ui.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/lib/Hui-iconfont/1.0.8/iconfont.min.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/chb.css" />
+    <link rel="stylesheet" type="text/css" href="./style/H-ui/CHB/shop-list.css" />
+    
+    <!--[if lt IE 9]>
+    <link href="static/h-ui/css/H-ui.ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+    <style type="text/css">
+        .ui-sortable .panel-header{ cursor:move}
+    </style>
+    <title>吃货宝-可能是湛江最菜的吃货订餐平台</title>
+    <link rel="shortcut icon" href="./favicon.ico" />
+    <meta name="description" content="”吃货宝”2017年创立于广东海洋大学，可能是海大领先的本地生活平台，截至目前，还在开发中2333333">
+    <meta name="keywords" content="吃货宝，网上订餐，外卖，快餐外卖，外卖网">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=72k77dZzkyRHVACpUju3vUMsbROEiRG8"></script>
+    <script src="./js/angular.min.js"></script> 
+</head>
+<body ontouchstart  ng-app="shopping" ng-controller="myCtrl">
+        
+        <div id="l-map" style="display:none"></div>
+        <div class="containBox">
+            <header class="navbar-wrapper">
+                <div class="navbar navbar-logo navbar-fixed-top isnotindex" >
+                    <div class="container cl">
+                            <a class="logo navbar-logo f-l mr-10 hidden-xs" href="./index.html"><img src="./logo/logo.png" class="img-responsive" alt="chb"></a>
+                            <a  class="logo navbar-logo-m visible-xs" href="./index.html">吃货宝</a>
+                            <input type="text" placeholder="搜索商户" id="suggestId" class="search-input-text radius size-M">
+                            <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+                            <button class="search-submit"><i class="Hui-iconfont"></i></button>
+                    </div>
+                </div>
+                <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+                        <ul class="cl">
+                            <li class="dropDown dropDown_hover"> 您好，<a href="#" class="dropDown_A">用户名 <i class="Hui-iconfont">&#xe6d5;</i></a>
+                                <ul class="dropDown-menu menu radius box-shadow">
+                                    <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+                                    <li><a href="#">退出</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+            </header>
+
+            <div class="panel panel-default mt-20 ml-10 mr-10">
+                    <div class="panel-body cl">
+                        <div class="s-img l mr-10">
+                            <img src="imgs/food/dfc/bqj.png" alt="..." width="100%" class="radius">
+                        </div>
+                        <div class="l shopInfo">
+                        <dl>
+                            <dt class="shopTitle">
+                                <h2>黄焖鸡米饭</h2>
+                            </dt>
+                        </dl>
+                        <dl class="mt-10">
+                            <dt class="l">
+                                月销售量：
+                            </dt>
+                            <dd class="c-red">1111份</dd>
+                        </dl>
+                        <dl class="mt-5">
+                            <dt class="l">
+                                <i class="Hui-iconfont">&#xe606;</i>
+                                接单时间：
+                            </dt>
+                            <dd>12:30</dd>
+                        </dl>
+                        <dl class="mt-5">
+                            <dt class="l">
+                                <i class="Hui-iconfont">&#xe671;</i>
+                                商户地址:                                 
+                            </dt>
+                        <dd title="湛江市麻章区湖光镇湖光市场一楼烧腊行1号">湛江市麻章区湖光镇湖光市场一楼烧腊行1号</dd>
+                        </dl>
+                        </div>
+                        <div class="sQisongjia r ml-30 pl-30 pr-15 text-c">
+                            <dl>
+                                <h3>¥1</h3>
+                            </dl>
+                            <dl>
+                                <h5>配送费</h5>
+                            </dl>  
+                        </div>
+                        <div class="r ml-10 text-c">
+                            <dl>
+                                <h3>¥<strong  id="qsj">3</strong></h3>
+                            </dl>
+                            <dl>
+                                <h5>起送价</h5>
+                            </dl>  
+                        </div>
+
+                    </div>
+            </div>
+
+            <div class="panel panel-default mt-20 ml-10 mr-10">
+				<div class="panel-body">
+					<table class="table chb-panel">
+						<tbody>
+							<tr  class="text-c">
+								<td><a href="#" class="chb-btn radius f-16">快食简餐</a></td>
+								<td><a href="#" class="chb-btn radius f-16">地方菜</a></td>
+								<td><a href="#" class="chb-btn radius f-16">中式正餐</a></td>
+								<td><a href="#" class="chb-btn radius f-16">烧烤海鲜</a></td>
+								<td><a href="#" class="chb-btn radius f-16">甜点饮品</a></td>
+								<td><a href="#" class="chb-btn radius f-16">水果生鲜</a></td>
+								<td><a href="#" class="chb-btn radius f-16">下午茶</a></td>
+								<td><a href="#" class="chb-btn radius f-16">鲜花蛋糕</a></td>
+								<td><a href="#" class="chb-btn radius f-16">夜宵</a></td>
+                            </tr>							
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+            <div class="panel panel-default mt-20 ml-10 mr-10">
+                    <div class="btn-group ml-5">
+                        <span class="btn chb-btn" title="字体">默认</span>
+                        <span class="btn chb-btn" title="加粗">销量<i class="Hui-iconfont">&#xe674;</i></span>
+                        <span class="btn chb-btn" title="倾斜">评分<i class="Hui-iconfont">&#xe674;</i></span>
+                    </div>
+			</div>
+            <div class="panel panel-default mt-20 mr-10  cl goodList" style="display:none">
+                <div class="panel-body cl">
+                        <div class="album-item f-l ml-5 mr-5 mb-10 l" style="width:200px"  ng-repeat="x in items | orderBy : price">
+                            <div class="album-img">
+                                <img src={{x.imgUrl}}> 
+                            </div>
+                            <div class="album-title">{{x.name}}</div>
+                            <div class="album-title">月售<span class="c-999">{{x.Sales}}</span>份</div>        
+                            <div class="album-title "><strong>¥{{x.price}}</strong>
+                                <span class="c-red">
+                                        <a href="javascript:;" ng-click="buy($index);">
+                                            <i class="Hui-iconfont r">&#xe670;</i>
+                                        </a>
+                                       
+                                </span>
+                            </div>        
+                        </div>
+			    </div>
+            </div>
+            </div>
+        <footer class="footer mt-20">
+                <div class="container-fluid ">
+                    <nav> <a href="#" target="_blank">关于我们</a> <span class="pipe">|</span> <a href="#" target="_blank">联系我们</a> <span class="pipe">|</span> <a href="#" target="_blank">法律声明</a> </nav>
+                    <p>Copyright &copy;2017 CHB All Rights Reserved. <br>
+                        <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备00000001号</a><br>
+                    </p>
+                </div>
+        </footer>
+
+            <div class="dual dual_r pf" >
+                <div class="dual_con">
+                    <ul id="Huifold1" class="Huifold">
+                        <li class="item">
+                            <h4>购物车&nbsp;&nbsp;共<span class="c-red">￥{{total|number:2}}</span>元<b><i class="Hui-iconfont">&#xe670;</i></b></h4>
+                            <div class="info">
+                                    <table class="table table-border table-bordered table-striped ordertable">
+                                            <tbody>
+                                              <tr>
+                                                <th class="text-c" >菜品</th>
+                                                <th class="text-c" >数量</th>
+                                                <th class="text-c" >价格</th>
+                                              </tr>
+                                              <tr ng-repeat="x in items" ng-if="itemNum[$index]!==0">
+                                                <td class="text-l" >{{x.name}}</td>
+                                                <td class="text-c" >
+                                                        <input class="l goodMinusNum" type="button" value="-" ng-click="minus($index);">
+                                                        <input class="l goodNum" type="text" ng-model="itemNum[$index]"> 
+                                                        <input class="l goodAddNum" type="button"  value="+" ng-click="add($index)">
+                                                </td>
+                                                <td>￥{{x.price*itemNum[$index]|number:2}}</td>
+                                              </tr>
+                                              <tr>
+                                                <td class="text-r">配送费</td>
+                                                <td ></td>
+                                                <td>￥<strong id="psf">4</strong></td>
+                                              </tr>
+                                              <tr>
+                                                <td class="text-r" >总计</td>
+                                                <td class="text-l c-red f-20" colspan="2">￥<strong id="total">{{4+total|number:2}}</strong></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        <input type="hidden" value="" id="shopID" name="">
+                                        <input class="btn btn-danger radius mt-5 mb-5 r" type="button" ng-click="addlist()" value="选好喽">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    <!--引用js文件 -->
+    <script type="text/javascript" src="./style/H-ui/lib/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery-ui/1.9.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/static/h-ui/js/H-ui.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.SuperSlide/2.1.1/jquery.SuperSlide.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+    <script type="text/javascript" src="./style/H-ui/lib/jquery.validation/1.14.0/messages_zh.min.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        /*angular*/
+        var data=[  
+         {"name":"苹果","imgUrl":"imgs/food/dfc/bqj.png","Sales":"123","price":"1"},  
+         {"name":"香蕉","imgUrl":"imgs/food/dfc/bqj.png","Sales":"13","price":"2"},  
+         {"name":"榴莲","imgUrl":"imgs/food/dfc/bqj.png","Sales":"12","price":"3"},  
+         {"name":"电脑","imgUrl":"imgs/food/dfc/bqj.png","Sales":"23","price":"4"},  
+         {"name":"手机","imgUrl":"imgs/food/dfc/bqj.png","Sales":"23","price":"25"},  
+         {"name":"显示屏","imgUrl":"imgs/food/dfc/bqj.png","Sales":"103","price":"16"},  
+         {"name":"冰箱","imgUrl":"imgs/food/dfc/bqj.png","Sales":"103","price":"35"},  
+         {"name":"大金桔","imgUrl":"imgs/food/dfc/bqj.png","Sales":"183","price":"15"},  
+         {"name":"切糕","imgUrl":"imgs/food/dfc/bqj.png","Sales":"173","price":"85"},  
+         {"name":"大西瓜","imgUrl":"imgs/food/dfc/bqj.png","Sales":"223","price":"55"}  
+       ];  
+       var app=angular.module("shopping",[]);  
+       app.controller("myCtrl",function($scope){  
+          $scope.items=data;  
+          $scope.itemNum=[];  
+          $scope.total=0;  
+          var len=$scope.items.length;  
+          for(var i=0;i<len;i++){  
+             $scope.itemNum[i]=0;               //初始化ng-model中的值，另其为0  
+          }  
+          $scope.$watch("itemNum",function(){   //监听ng-model中的值的变化  
+            $scope.getTotal();
+            $scope.addlist();  
+          },true)  
+          $scope.buy=function(index){           //点击购买按钮时发生的事件  
+              $scope.itemNum[index]++;              
+          }  
+          $scope.minus=function(index){         //减少数量  
+              $scope.itemNum[index]--;  
+              if($scope.itemNum[index]<=0){  
+                $scope.itemNum[index]=0;  
+              }           
+          }   
+          $scope.add=function(index){           //增加数量  
+              $scope.itemNum[index]++;  
+          }  
+          $scope.getTotal=function(index){     //重新计算总价  
+            $scope.total=0;  
+            for(var j=0;j<len;j++){  
+                $scope.total=$scope.total+$scope.itemNum[j]*$scope.items[j].price;    
+            }  
+            return $scope.total;  
+          }
+          $scope.addlist=function(index){       //绑定提交按钮并生成、插入json传入localstorage
+              var psf = $("#psf").text();
+              var total = $("#total").text();
+              var qsj = $("#qsj").text();
+              var shopID = $("#shopID").text();
+              var savePT = [psf,total,qsj,shopID];
+
+              $scope.goodlist=[];
+              for(var k=0;k<len;k++){
+                if($scope.itemNum[k]==0){//如果购买数量为0就GG
+                    continue;
+                }else{
+                $scope.goodlist.push(
+                    {"name":$scope.items[k].name,"goodNum":$scope.itemNum[k],"goodPrice":$scope.items[k].price*$scope.itemNum[k]}
+                    );
+                };
+              };
+              localStorage.setItem('goodlist',JSON.stringify($scope.goodlist));
+              localStorage.setItem('PT',JSON.stringify(savePT));
+          }
+
+       })  
+        /*angular-End*/
+        /*存数据*/
+
+        /*存数据E*/
+
+        $(function(){
+            $("#Huifold1").Huifold({
+                titCell:'.item h4',
+                mainCell:'.item .info',
+                type:1,
+                trigger:'click',
+                className:"selected",
+                speed:"slow",
+            });
+            /*对联广告*/
+            var dual = $(".dual");
+            var dual_close = $("a.dual_close");	
+            var screen_w = screen.width;
+            if(screen_w > 1024){
+                dual.show()
+            }
+
+            dual_close.click(function(){
+                $(this).parent().hide();
+                return false
+            });
+        
+        });
+	// 百度地图API功能
+	function G(id) {
+		return document.getElementById(id);
+	}
+
+	var map = new BMap.Map("l-map");
+	var point = new BMap.Point(110.3090339940,21.1515381533);
+	map.centerAndZoom(point,15);
+
+	function myFun(result){
+		var cityName = result.name;
+		map.setCenter(cityName);
+		$("#dw").text(cityName);
+	}
+	var myCity = new BMap.LocalCity();
+    myCity.get(myFun);
+    
+	var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+		{"input" : "suggestId"
+		,"location" : map
+	});
+
+	ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+	var str = "";
+		var _value = e.fromitem.value;
+		var value = "";
+		if (e.fromitem.index > -1) {
+			value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		}    
+		str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+		
+		value = "";
+		if (e.toitem.index > -1) {
+			_value = e.toitem.value;
+			value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		}    
+		str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+		G("searchResultPanel").innerHTML = str;
+	});
+
+	var myValue;
+	ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+	var _value = e.item.value;
+		myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+		
+		setPlace();
+	});
+    
+    
+	function setPlace(){
+		map.clearOverlays();    //清除地图上所有覆盖物
+		function myFun(){
+			var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+			map.centerAndZoom(pp, 18);
+			map.addOverlay(new BMap.Marker(pp));    //添加标注
+		}
+		var local = new BMap.LocalSearch(map, { //智能搜索
+		  onSearchComplete: myFun
+		});
+		local.search(myValue);
+	}
+
+
+        $(function(){
+            $(".input-text,.textarea").Huifocusblur();
+            
+            $(".panel").Huifold({
+                titCell:'.panel-header',
+                mainCell:'.panel-body',
+                type:1,
+                trigger:'click',
+                className:"selected",
+                speed:"first",
+            });
+            
+            //checkbox 美化
+            $('.skin-minimal input').iCheck({
+                checkboxClass: 'icheckbox-blue',
+                radioClass: 'iradio-blue',
+                increaseArea: '20%'
+            });
+            
+            //返回顶部
+            $.Huitotop();
+
+            
+            $('.goodList').show(1000);
+        });
+        </script>
+</body>
+</html>
